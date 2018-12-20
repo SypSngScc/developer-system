@@ -74,7 +74,7 @@ public class MybatisPlusGenerator {
         // 自定义 service 实现类父类
         // strategy.setSuperServiceImplClass("com.baomidou.demo.TestServiceImpl");
         // 自定义 controller 父类
-        strategy.setSuperControllerClass("com.power.bos.utils.api.RestApiController");
+        strategy.setSuperControllerClass("com.sss.utils.RestApiController");
         // 【实体】是否生成字段常量（默认 false）
         // public static final String ID = "test_id";
         // strategy.setEntityColumnConstant(true);

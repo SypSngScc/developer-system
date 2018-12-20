@@ -1,0 +1,39 @@
+package ${package.Entity};
+
+#foreach($pkg in ${table.importPackages})
+#if("${pkg}" !="com.baomidou.mybatisplus.activerecord.Model" and "${pkg}" !="java.io.Serializable" and "${pkg}" !="java.util.Date")
+import ${pkg};
+#end
+#end
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import com.power.bos.framework.entity.BaseEntity;
+
+/**
+ * <p>
+ * ${table.comment}
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Data
+#if(${table.convert})
+@TableName("${table.name}")
+@ApiModel(value = "${table.comment}")
+@EqualsAndHashCode(callSuper = true)
+#end
+public class ${entity} extends BaseEntity {
+
+#foreach($field in ${table.fields})
+    #if("${field.propertyName}" !="id" and "${field.propertyName}" !="insertTime")
+    @TableField("${field.name}")
+    @ApiModelProperty(value = "${field.comment}")
+    private ${field.propertyType} ${field.propertyName};
+
+    #end
+#end
+}

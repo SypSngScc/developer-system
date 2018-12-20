@@ -1,0 +1,73 @@
+package ${package.Controller};
+
+import com.baomidou.mybatisplus.plugins.Page;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.power.bos.api.API;
+import com.power.bos.api.RestApiController;
+
+import com.power.bos.framework.base.PageVO;
+import com.power.bos.framework.vo.ResultVO;
+import ${package.Entity}.${entity};
+import ${package.Service}.${table.serviceName};
+
+import javax.annotation.Resource;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+/**
+ * <p>
+ * ${table.comment} API 控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Api(value = "${entity} API", description = "${table.comment} API")
+@RestController
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/${table.entityPath}")
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass}<${entity}> {
+#else
+public class ${table.controllerName} {
+#end
+    #set ($serviceVar = $table.serviceName.substring(0,1).toLowerCase() + $table.serviceName.substring(1))
+
+    @Resource
+    private ${table.serviceName} ${serviceVar};
+
+    @PostMapping("/query")
+    @ApiOperation(value = API.QUERY_NAME, notes = API.QUERY_DESC)
+    public PageVO<${entity}> query(@RequestBody Page<${entity}> page) {
+        Page<${entity}> recordsPage = ${serviceVar}.selectPage(page);
+        return new PageVO<>(recordsPage);
+    }
+
+    @PostMapping("/create")
+    @ApiOperation(value = API.CREATE_NAME, notes = API.CREATE_DESC)
+    public ResultVO create(@RequestBody ${entity} entity) {
+        ResultVO result = new ResultVO();
+        ${serviceVar}.insert(entity);
+        return result;
+    }
+
+    @PostMapping("/update")
+    @ApiOperation(value = API.UPDATE_NAME, notes = API.UPDATE_DESC)
+    public ResultVO update(@RequestBody ${entity} entity) {
+        ResultVO result = new ResultVO();
+        ${serviceVar}.updateById(entity);
+        return result;
+    }
+
+    @PostMapping("/delete")
+    @ApiOperation(value = API.DELETE_NAME, notes = API.DELETE_DESC)
+    public ResultVO delete(@RequestBody ${entity} entity) {
+        ResultVO result = new ResultVO();
+        ${serviceVar}.deleteById(entity.getId());
+        return result;
+    }
+
+}

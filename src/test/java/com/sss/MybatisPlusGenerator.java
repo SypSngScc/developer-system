@@ -15,7 +15,7 @@ public class MybatisPlusGenerator {
     private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "root";
-    private static final String ROOT = "D:\\IdeaProject\\test";
+    private static final String ROOT = "C:\\developer-system\\src\\main\\java\\com\\sss";
     private static final String DIR = "";
     private static final String BASE_PACKAGE = "com.sss";
     private static final String AUTHOR = "syp";

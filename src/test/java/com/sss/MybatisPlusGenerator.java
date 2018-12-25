@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class MybatisPlusGenerator {
 
-    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true";
+    private static final String DB_URL = "jdbc:mysql://114.116.127.213:3306/developer_sss?useUnicode=true&characterEncoding=utf8&autoReconnect=true";
     private static final String DB_USER = "root";
-    private static final String DB_PASS = "root";
+    private static final String DB_PASS = "_C5j?56f";
     private static final String ROOT = "C:\\developer-system\\src\\main\\java\\com\\sss";
     private static final String DIR = "";
     private static final String BASE_PACKAGE = "com.sss";
@@ -54,9 +54,9 @@ public class MybatisPlusGenerator {
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setTablePrefix(new String[]{"sys_", "t_"});// 此处可以修改为您的表前缀
+        strategy.setTablePrefix(new String[]{"t_"});// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "t_store_manager" }); // 需要生成的表
+        strategy.setInclude(new String[] { "t_user","t_article","t_article_comment","t_articlecollect_user","t_articlelike_user","t_circle_user","t_powercircle" }); // 需要生成的表
         // strategy.setExclude(new String[] { "zz_privilege", "zz_resource",
         // "zz_role_resource", "zz_user_permission",
         // "zz_user_resource" }); // 排除生成的表

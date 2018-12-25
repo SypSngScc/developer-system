@@ -21,21 +21,30 @@ import java.io.InputStream;
  * created by shiyuping on 2018/12/24
  */
 @Configuration
-@PropertySource("classpath:config/config.properties")
+@PropertySource("classpath:application.properties")
 public class OSSClientUtil {
 
     /** 日志 */
     private static Logger logger = LoggerFactory.getLogger(OSSClientUtil.class);
 
     /** 阿里云API的密钥Access Key ID */
+    @Value("${aliyun.accessKeyId}")
     private static String accessKeyId;
+
     /** 阿里云API的密钥Access Key Secret */
+    @Value("${aliyun.accessKeySecret}")
     private static String accessKeySecret;
+
     /** 阿里云API的内或外网域名 */
+    @Value("${aliyun.oss.endpoint}")
     private static String endpoint;
+
     /** 阿里云API的bucket名称 */
+    @Value("${aliyun.oss.bucketName}")
     private static String bucketName;
+
     /** 阿里云API的文件夹名称 */
+    @Value("${aliyun.oss.folder}")
     private static String folder;
 
     /**
@@ -200,30 +209,5 @@ public class OSSClientUtil {
         }
         // 默认返回类型
         return "";
-    }
-
-    @Value("${aliyun.accessKeyId}")
-    public void setAccessKeyId(String accessKeyId) {
-        OSSClientUtil.accessKeyId = accessKeyId;
-    }
-
-    @Value("${aliyun.accessKeySecret}")
-    public void setAccessKeySecret(String accessKeySecret) {
-        OSSClientUtil.accessKeySecret = accessKeySecret;
-    }
-
-    @Value("${aliyun.oss.endpoint}")
-    public void setEndpoint(String endpoint) {
-        OSSClientUtil.endpoint = endpoint;
-    }
-
-    @Value("${aliyun.oss.bucketName}")
-    public void setBucketName(String bucketName) {
-        OSSClientUtil.bucketName = bucketName;
-    }
-
-    @Value("${aliyun.oss.folder}")
-    public void setFolder(String folder) {
-        OSSClientUtil.folder = folder;
     }
 }

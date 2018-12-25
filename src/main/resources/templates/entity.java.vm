@@ -23,15 +23,13 @@ import com.power.bos.framework.entity.BaseEntity;
 @Data
 #if(${table.convert})
 @TableName("${table.name}")
-@ApiModel(value = "${table.comment}")
 @EqualsAndHashCode(callSuper = true)
 #end
 public class ${entity} extends BaseEntity {
 
 #foreach($field in ${table.fields})
-    #if("${field.propertyName}" !="id" and "${field.propertyName}" !="insertTime")
+    #if("${field.propertyName}" !="id" and "${field.propertyName}" !="createTime")
     @TableField("${field.name}")
-    @ApiModelProperty(value = "${field.comment}")
     private ${field.propertyType} ${field.propertyName};
 
     #end

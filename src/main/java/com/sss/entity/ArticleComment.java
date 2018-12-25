@@ -16,6 +16,8 @@ import java.util.Date;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("t_article_comment")
 @EqualsAndHashCode(callSuper = true)
 public class ArticleComment extends BaseEntity {

@@ -16,6 +16,8 @@ import java.util.Date;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("t_user")
 @EqualsAndHashCode(callSuper = true)
 public class User extends BaseEntity {

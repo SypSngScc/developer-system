@@ -16,6 +16,8 @@ import java.util.Date;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("t_powercircle")
 @EqualsAndHashCode(callSuper = true)
 public class Powercircle extends BaseEntity {

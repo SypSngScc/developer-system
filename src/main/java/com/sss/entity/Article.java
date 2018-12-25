@@ -16,6 +16,8 @@ import java.util.Date;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("t_article")
 @EqualsAndHashCode(callSuper = true)
 public class Article extends BaseEntity {

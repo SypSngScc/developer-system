@@ -16,6 +16,8 @@ import java.util.Date;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("t_circle_user")
 @EqualsAndHashCode(callSuper = true)
 public class CircleUser extends BaseEntity {

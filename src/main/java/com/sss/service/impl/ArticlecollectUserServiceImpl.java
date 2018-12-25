@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sss.entity.ArticlecollectUser;
 import com.sss.mapper.ArticlecollectUserDao;
 import com.sss.service.ArticlecollectUserService;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -13,6 +14,7 @@ import com.sss.service.ArticlecollectUserService;
  * @author syp
  * @since 2018-12-25
  */
+@Service
 public class ArticlecollectUserServiceImpl extends ServiceImpl<ArticlecollectUserDao, ArticlecollectUser> implements ArticlecollectUserService {
 
 }

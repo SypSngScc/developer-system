@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sss.entity.ArticlelikeUser;
 import com.sss.mapper.ArticlelikeUserDao;
 import com.sss.service.ArticlelikeUserService;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -13,6 +14,7 @@ import com.sss.service.ArticlelikeUserService;
  * @author syp
  * @since 2018-12-25
  */
+@Service
 public class ArticlelikeUserServiceImpl extends ServiceImpl<ArticlelikeUserDao, ArticlelikeUser> implements ArticlelikeUserService {
 
 }

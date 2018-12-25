@@ -2,8 +2,7 @@ package com.sss.entity;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import java.util.Date;
 
@@ -16,6 +15,7 @@ import java.util.Date;
  * @since 2018-12-25
  */
 @Data
+@Builder
 @TableName("t_article_comment")
 @EqualsAndHashCode(callSuper = true)
 public class ArticleComment extends BaseEntity {

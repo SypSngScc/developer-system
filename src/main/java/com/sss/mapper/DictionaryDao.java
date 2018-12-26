@@ -2,6 +2,8 @@ package com.sss.mapper;
 
 import com.sss.entity.Dictionary;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DictionaryDao extends BaseMapper<Dictionary> {
 
-    String getDicValueByDicName(String dicName);
+    @Select("select dicValue from t_dictionary where dicName = #{dicName}")
+    String getDicValueByDicName(@Param("dicName") String dicName);
 
 }

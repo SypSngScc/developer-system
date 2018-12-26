@@ -11,9 +11,9 @@
 		<result column="memo" property="memo" />
 	</resultMap>
     
-    <select id="getDicValueByDicName" resultType="string" parameterType="string">
+    <!--<select id="getDicValueByDicName" resultType="string" parameterType="string">
         select dicValue from t_dictionary
         where dicName = #{dicName}
-    </select>
+    </select>-->
 
 </mapper>

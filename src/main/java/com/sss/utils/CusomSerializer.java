@@ -41,13 +41,12 @@ public class CusomSerializer extends JsonSerializer<BaseEntity> {
         gen.writeStartObject();
         Field[] fields = value.getClass().getDeclaredFields();
         Class<? extends BaseEntity> class1 = value.getClass();
-        String className = class1.getName();
+        //String className = class1.getName();
         for (Field field : fields){
             field.setAccessible(true);
             try {
                 if (field.isAnnotationPresent(Dictionary.class)){
-                    String dicName =null;
-                        dicName = (String)field.get(value);
+                    String dicName = (String)field.get(value);
                         if (StringUtils.isNotEmpty(dicName)){
                             if (dicName.contains(",")){
                                 String[] strings = dicName.split("," );

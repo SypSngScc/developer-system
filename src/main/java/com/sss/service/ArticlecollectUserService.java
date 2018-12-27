@@ -1,7 +1,9 @@
 package com.sss.service;
 
 import com.baomidou.mybatisplus.service.IService;
+import com.sss.dto.ResultVO;
 import com.sss.entity.ArticlecollectUser;
+import com.sss.entity.User;
 
 /**
  * <p>
@@ -13,4 +15,5 @@ import com.sss.entity.ArticlecollectUser;
  */
 public interface ArticlecollectUserService extends IService<ArticlecollectUser> {
 
+    ResultVO findCollectArticleNumByUserId(User user);
 }

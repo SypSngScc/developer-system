@@ -49,4 +49,7 @@ public class Article extends BaseEntity {
     @TableField("updateTime")
     private Date updateTime;
 
+    @TableField("authorId")
+    private String authorId;
+
 }

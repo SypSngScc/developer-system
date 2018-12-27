@@ -3,7 +3,9 @@ package com.sss.controller;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.sss.dto.PageVO;
 import com.sss.dto.ResultVO;
+import com.sss.entity.Article;
 import com.sss.entity.ArticlecollectUser;
+import com.sss.entity.User;
 import com.sss.service.ArticlecollectUserService;
 import com.sss.utils.RestApiController;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,6 +55,16 @@ public class ArticlecollectUserApiController extends RestApiController<Articleco
         ResultVO result = new ResultVO();
         articlecollectUserService.deleteById(entity.getId());
         return result;
+    }
+
+    /**
+     * 查询当前用户收藏的文章数
+     * @param user
+     * @return
+     */
+    @PostMapping("/findCollectArticleNum")
+    public ResultVO findCollectArticleNumByUserId(@RequestBody User user){
+        return articlecollectUserService.findCollectArticleNumByUserId(user);
     }
 
 }

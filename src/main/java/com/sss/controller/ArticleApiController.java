@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.sss.dto.PageVO;
 import com.sss.dto.ResultVO;
 import com.sss.entity.Article;
+import com.sss.entity.User;
 import com.sss.service.ArticleService;
 import com.sss.utils.RestApiController;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,5 +55,16 @@ public class ArticleApiController extends RestApiController<Article> {
         articleService.deleteById(entity.getId());
         return result;
     }
+
+    /**
+     * 根据用户id查找发表的文章
+     * @param user
+     * @return
+     */
+    @PostMapping("/findArticle")
+    public PageVO<Article> findArticleByUserId(@RequestBody User user){
+        return articleService.findArticleByUserId(user);
+    }
+
 
 }

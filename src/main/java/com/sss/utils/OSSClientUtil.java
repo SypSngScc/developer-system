@@ -5,6 +5,7 @@ import com.aliyun.oss.model.Bucket;
 import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,13 +16,15 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URL;
+import java.util.Date;
 
 /**
  * 使用阿里云OSS存储对象上传图片
  * created by shiyuping on 2018/12/24
  */
 @Configuration
-@PropertySource("classpath:application.properties")
+/*@PropertySource("classpath:application.properties")*/
 public class OSSClientUtil {
 
     /** 日志 */
@@ -47,13 +50,18 @@ public class OSSClientUtil {
     @Value("${aliyun.oss.folder}")
     private static String folder;
 
+    private static OSSClient ossClient;
+
     /**
      * 获取阿里云OSS客户端对象
      *
      * @return ossClient
      */
     public static OSSClient getOSSClient() {
-        return new OSSClient(endpoint, accessKeyId, accessKeySecret);
+        if (ossClient == null){
+            ossClient =  new OSSClient(endpoint, accessKeyId, accessKeySecret);
+        }
+       return ossClient;
     }
 
     /**
@@ -126,19 +134,16 @@ public class OSSClientUtil {
     /**
      * 上传图片至OSS
      *
-     * @param ossClient oss连接
      * @param file 上传文件（文件全路径如：D:\\image\\cake.jpg）
-     * @param bucketName 存储空间
-     * @param folder 模拟文件夹名 如"qj_nanjing/"
-     * @return String 返回的唯一MD5数字签名
+     * @return String 返回url
      */
-    public static String uploadObject2OSS(OSSClient ossClient, File file, String bucketName, String folder) {
+    public static String uploadObject2OSS(File file,String fileName) {
         String resultStr = null;
         try {
             // 以输入流的形式上传文件
             InputStream is = new FileInputStream(file);
-            // 文件名
-            String fileName = file.getName();
+            /*// 文件名
+            String fileName = file.getName();*/
             // 文件大小
             Long fileSize = file.length();
             // 创建上传Object的Metadata
@@ -157,14 +162,46 @@ public class OSSClientUtil {
             // 指定该Object被下载时的名称（指示MINME用户代理如何显示附加的文件，打开或下载，及文件名称）
             metadata.setContentDisposition("filename/filesize=" + fileName + "/" + fileSize + "Byte.");
             // 上传文件 (上传文件流的形式)
-            PutObjectResult putResult = ossClient.putObject(bucketName, folder + fileName, is, metadata);
+            PutObjectResult putResult = getOSSClient().putObject(bucketName, folder + fileName, is, metadata);
             // 解析结果
-            resultStr = putResult.getETag();
+            resultStr = putResult.getETag();//返回的唯一MD5数字签名
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("上传阿里云OSS服务器异常." + e.getMessage(), e);
         }
-        return resultStr;
+        //获取url
+        return getImgUrl(fileName);
+    }
+
+    /**
+     * 获得图片路径
+     *
+     * @param fileUrl
+     * @return
+     */
+    public static String getImgUrl(String fileUrl) {
+        if (!StringUtils.isEmpty(fileUrl)) {
+            String[] split = fileUrl.split("/");
+            return getUrl(folder + split[split.length - 1]);
+        }
+        return null;
+    }
+
+    /**
+     * 获得url链接
+     *
+     * @param key
+     * @return
+     */
+    public static String getUrl(String key) {
+        // 设置URL过期时间为10年  3600l* 1000*24*365*10
+        Date expiration = new Date(new Date().getTime() + 3600l * 1000 * 24 * 365 * 10);
+        // 生成URL
+        URL url = getOSSClient().generatePresignedUrl(bucketName, key, expiration);
+        if (url != null) {
+            return url.toString();
+        }
+        return null;
     }
 
     /**

@@ -1,8 +1,5 @@
 package com.sss.service;
 
-import com.baomidou.mybatisplus.service.IService;
-import com.sss.entity.CircleUser;
-
 /**
  * <p>
  *  服务类
@@ -11,6 +8,6 @@ import com.sss.entity.CircleUser;
  * @author syp
  * @since 2018-12-25
  */
-public interface CircleUserService extends IService<CircleUser> {
+public interface CircleUserService {
 
 }

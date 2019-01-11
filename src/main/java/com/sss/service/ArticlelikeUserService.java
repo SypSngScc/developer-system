@@ -1,8 +1,5 @@
 package com.sss.service;
 
-import com.baomidou.mybatisplus.service.IService;
-import com.sss.entity.ArticlelikeUser;
-
 /**
  * <p>
  *  服务类
@@ -11,6 +8,6 @@ import com.sss.entity.ArticlelikeUser;
  * @author syp
  * @since 2018-12-25
  */
-public interface ArticlelikeUserService extends IService<ArticlelikeUser> {
+public interface ArticlelikeUserService {
 
 }

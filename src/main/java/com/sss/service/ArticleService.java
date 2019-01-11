@@ -1,6 +1,5 @@
 package com.sss.service;
 
-import com.baomidou.mybatisplus.service.IService;
 import com.sss.dto.PageVO;
 import com.sss.entity.Article;
 import com.sss.entity.User;
@@ -13,7 +12,7 @@ import com.sss.entity.User;
  * @author syp
  * @since 2018-12-25
  */
-public interface ArticleService extends IService<Article> {
+public interface ArticleService {
 
     PageVO<Article> findArticleByUserId(User user);
 }

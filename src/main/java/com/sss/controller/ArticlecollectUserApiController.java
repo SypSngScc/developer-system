@@ -30,7 +30,7 @@ public class ArticlecollectUserApiController extends RestApiController<Articleco
     @Resource
     private ArticlecollectUserService articlecollectUserService;
 
-    @PostMapping("/query")
+    /*@PostMapping("/query")
     public PageVO<ArticlecollectUser> query(@RequestBody Page<ArticlecollectUser> page) {
         Page<ArticlecollectUser> recordsPage = articlecollectUserService.selectPage(page);
         return new PageVO<>(recordsPage);
@@ -55,7 +55,7 @@ public class ArticlecollectUserApiController extends RestApiController<Articleco
         ResultVO result = new ResultVO();
         articlecollectUserService.deleteById(entity.getId());
         return result;
-    }
+    }*/
 
     /**
      * 查询当前用户收藏的文章数

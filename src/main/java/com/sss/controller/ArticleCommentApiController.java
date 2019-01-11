@@ -28,7 +28,7 @@ public class ArticleCommentApiController extends RestApiController<ArticleCommen
     @Resource
     private ArticleCommentService articleCommentService;
 
-    @PostMapping("/query")
+    /*@PostMapping("/query")
     public PageVO<ArticleComment> query(@RequestBody Page<ArticleComment> page) {
         Page<ArticleComment> recordsPage = articleCommentService.selectPage(page);
         return new PageVO<>(recordsPage);
@@ -53,6 +53,6 @@ public class ArticleCommentApiController extends RestApiController<ArticleCommen
         ResultVO result = new ResultVO();
         articleCommentService.deleteById(entity.getId());
         return result;
-    }
+    }*/
 
 }

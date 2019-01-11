@@ -28,7 +28,7 @@ public class CircleUserApiController extends RestApiController<CircleUser> {
     @Resource
     private CircleUserService circleUserService;
 
-    @PostMapping("/query")
+   /* @PostMapping("/query")
     public PageVO<CircleUser> query(@RequestBody Page<CircleUser> page) {
         Page<CircleUser> recordsPage = circleUserService.selectPage(page);
         return new PageVO<>(recordsPage);
@@ -53,6 +53,6 @@ public class CircleUserApiController extends RestApiController<CircleUser> {
         ResultVO result = new ResultVO();
         circleUserService.deleteById(entity.getId());
         return result;
-    }
+    }*/
 
 }

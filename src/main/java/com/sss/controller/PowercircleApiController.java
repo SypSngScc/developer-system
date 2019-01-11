@@ -28,7 +28,7 @@ public class PowercircleApiController extends RestApiController<Powercircle> {
     @Resource
     private PowercircleService powercircleService;
 
-    @PostMapping("/query")
+    /*@PostMapping("/query")
     public PageVO<Powercircle> query(@RequestBody Page<Powercircle> page) {
         Page<Powercircle> recordsPage = powercircleService.selectPage(page);
         return new PageVO<>(recordsPage);
@@ -53,6 +53,6 @@ public class PowercircleApiController extends RestApiController<Powercircle> {
         ResultVO result = new ResultVO();
         powercircleService.deleteById(entity.getId());
         return result;
-    }
+    }*/
 
 }

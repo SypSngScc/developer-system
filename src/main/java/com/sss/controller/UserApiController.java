@@ -28,7 +28,7 @@ public class UserApiController extends RestApiController<User> {
     @Resource
     private UserService userService;
 
-    @PostMapping("/query")
+    /*@PostMapping("/query")
     public PageVO<User> query(@RequestBody Page<User> page) {
         Page<User> recordsPage = userService.selectPage(page);
         return new PageVO<>(recordsPage);
@@ -53,6 +53,6 @@ public class UserApiController extends RestApiController<User> {
         ResultVO result = new ResultVO();
         userService.deleteById(entity.getId());
         return result;
-    }
+    }*/
 
 }

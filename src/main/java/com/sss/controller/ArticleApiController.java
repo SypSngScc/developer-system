@@ -29,7 +29,7 @@ public class ArticleApiController extends RestApiController<Article> {
     @Resource
     private ArticleService articleService;
 
-    @PostMapping("/query")
+    /*@PostMapping("/query")
     public PageVO<Article> query(@RequestBody Page<Article> page) {
         Page<Article> recordsPage = articleService.selectPage(page);
         return new PageVO<>(recordsPage);
@@ -54,7 +54,7 @@ public class ArticleApiController extends RestApiController<Article> {
         ResultVO result = new ResultVO();
         articleService.deleteById(entity.getId());
         return result;
-    }
+    }*/
 
     /**
      * 根据用户id查找发表的文章

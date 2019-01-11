@@ -28,7 +28,7 @@ public class ArticlelikeUserApiController extends RestApiController<ArticlelikeU
     @Resource
     private ArticlelikeUserService articlelikeUserService;
 
-    @PostMapping("/query")
+    /*@PostMapping("/query")
     public PageVO<ArticlelikeUser> query(@RequestBody Page<ArticlelikeUser> page) {
         Page<ArticlelikeUser> recordsPage = articlelikeUserService.selectPage(page);
         return new PageVO<>(recordsPage);
@@ -53,6 +53,6 @@ public class ArticlelikeUserApiController extends RestApiController<ArticlelikeU
         ResultVO result = new ResultVO();
         articlelikeUserService.deleteById(entity.getId());
         return result;
-    }
+    }*/
 
 }

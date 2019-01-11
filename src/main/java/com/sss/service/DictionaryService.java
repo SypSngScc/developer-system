@@ -1,5 +1,8 @@
 package com.sss.service;
 
+import com.sss.dto.ResultVO;
+import com.sss.entity.Dictionary;
+
 /**
  * <p>
  *  服务类
@@ -10,4 +13,5 @@ package com.sss.service;
  */
 public interface DictionaryService {
 
+    ResultVO insert(Dictionary entity);
 }

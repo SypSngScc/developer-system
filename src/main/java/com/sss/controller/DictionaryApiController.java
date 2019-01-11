@@ -27,20 +27,18 @@ public class DictionaryApiController extends RestApiController<Dictionary> {
     @Resource
     private DictionaryService dictionaryService;
 
-    @PostMapping("/query")
+   /* @PostMapping("/query")
     public PageVO<Dictionary> query(@RequestBody Page<Dictionary> page) {
         Page<Dictionary> recordsPage = dictionaryService.selectPage(page);
         return new PageVO<>(recordsPage);
-    }
+    }*/
 
     @PostMapping("/create")
     public ResultVO create(@RequestBody Dictionary entity) {
-        ResultVO result = new ResultVO();
-        dictionaryService.insert(entity);
-        return result;
+        return dictionaryService.insert(entity);
     }
 
-    @PostMapping("/update")
+    /*@PostMapping("/update")
     public ResultVO update(@RequestBody Dictionary entity) {
         ResultVO result = new ResultVO();
         dictionaryService.updateById(entity);
@@ -52,6 +50,6 @@ public class DictionaryApiController extends RestApiController<Dictionary> {
         ResultVO result = new ResultVO();
         dictionaryService.deleteById(entity.getId());
         return result;
-    }
+    }*/
 
 }

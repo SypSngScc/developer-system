@@ -24,9 +24,6 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 public class Article extends BaseEntity {
 
-    @TableId(value = "id", type = IdType.UUID)
-    private String id;
-
     @TableField("title")
     private String title;
 
@@ -56,8 +53,5 @@ public class Article extends BaseEntity {
 
     @TableField("authorId")
     private String authorId;
-
-    @TableField("createTime")
-    private Date createTime;
 
 }

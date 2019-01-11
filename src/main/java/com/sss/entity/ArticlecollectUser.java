@@ -23,8 +23,6 @@ import java.util.Date;
 @TableName("t_articlecollect_user")
 @EqualsAndHashCode(callSuper = true)
 public class ArticlecollectUser extends BaseEntity {
-    @TableId(value = "id", type = IdType.UUID)
-    private String id;
 
     @TableField("articleId")
     private String articleId;
@@ -38,7 +36,5 @@ public class ArticlecollectUser extends BaseEntity {
     @TableField("updateTime")
     private Date updateTime;
 
-    @TableField("createTime")
-    private Date createTime;
 
 }

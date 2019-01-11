@@ -25,9 +25,6 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 public class Powercircle extends BaseEntity {
 
-    @TableId(value = "id", type = IdType.UUID)
-    private String id;
-
     @TableField("circleName")
     private String circleName;
 
@@ -50,7 +47,5 @@ public class Powercircle extends BaseEntity {
     @TableField("updateTime")
     private Date updateTime;
 
-    @TableField("createTime")
-    private Date createTime;
 
 }

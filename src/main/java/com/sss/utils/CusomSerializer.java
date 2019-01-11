@@ -16,7 +16,10 @@ import javax.annotation.Resource;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -39,8 +42,15 @@ public class CusomSerializer extends JsonSerializer<BaseEntity> {
     @Override
     public void serialize(BaseEntity value, JsonGenerator gen, SerializerProvider serializerProvider) throws IOException {
         gen.writeStartObject();
-        Field[] fields = value.getClass().getDeclaredFields();
-        Class<? extends BaseEntity> class1 = value.getClass();
+        //Field[] fields = value.getClass().getDeclaredFields();
+        Class<?> clazz = value.getClass();
+        List<Field> fieldList = new ArrayList<>();
+        while (clazz != null){
+            fieldList.addAll(new ArrayList<>(Arrays.asList(clazz.getDeclaredFields())));
+            clazz = clazz.getSuperclass();
+        }
+        Field[] fields = new Field[fieldList.size()];
+        fieldList.toArray(fields);
         //String className = class1.getName();
         for (Field field : fields){
             field.setAccessible(true);

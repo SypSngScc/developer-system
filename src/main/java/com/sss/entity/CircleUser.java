@@ -23,8 +23,6 @@ import java.util.Date;
 @TableName("t_circle_user")
 @EqualsAndHashCode(callSuper = true)
 public class CircleUser extends BaseEntity {
-    @TableId(value = "id", type = IdType.UUID)
-    private String id;
 
     @TableField("circleId")
     private String circleId;
@@ -38,7 +36,5 @@ public class CircleUser extends BaseEntity {
     @TableField("updateTime")
     private Date updateTime;
 
-    @TableField("createTime")
-    private Date createTime;
 
 }

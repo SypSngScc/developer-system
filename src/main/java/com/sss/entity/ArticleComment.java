@@ -23,8 +23,6 @@ import java.util.Date;
 @TableName("t_article_comment")
 @EqualsAndHashCode(callSuper = true)
 public class ArticleComment extends BaseEntity {
-    @TableId(value = "id", type = IdType.UUID)
-    private String id;
 
     @TableField("articleId")
     private String articleId;
@@ -46,8 +44,5 @@ public class ArticleComment extends BaseEntity {
 
     @TableField("updateTime")
     private Date updateTime;
-
-    @TableField("createTime")
-    private Date createTime;
 
 }

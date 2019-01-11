@@ -1,7 +1,10 @@
 package com.sss.entity;
 
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+import com.sss.annotation.Dictionary;
 import lombok.*;
 
 import java.util.Date;
@@ -22,6 +25,9 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 public class Powercircle extends BaseEntity {
 
+    @TableId(value = "id", type = IdType.UUID)
+    private String id;
+
     @TableField("circleName")
     private String circleName;
 
@@ -32,6 +38,7 @@ public class Powercircle extends BaseEntity {
     private String avatar;
 
     @TableField("tag")
+    @Dictionary
     private String tag;
 
     @TableField("intro")
@@ -42,5 +49,8 @@ public class Powercircle extends BaseEntity {
 
     @TableField("updateTime")
     private Date updateTime;
+
+    @TableField("createTime")
+    private Date createTime;
 
 }

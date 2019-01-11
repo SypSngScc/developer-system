@@ -1,8 +1,10 @@
 package com.sss.entity;
 
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,8 +18,9 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @TableName("t_dictionary")
-@EqualsAndHashCode(callSuper = true)
-public class Dictionary extends BaseEntity {
+public class Dictionary{
+    @TableId(value = "id", type = IdType.UUID)
+    private String id;
 
     @TableField("dict_name")
     private String dictName;

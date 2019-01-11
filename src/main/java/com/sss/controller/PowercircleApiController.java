@@ -28,19 +28,7 @@ public class PowercircleApiController extends RestApiController<Powercircle> {
     @Resource
     private PowercircleService powercircleService;
 
-    /*@PostMapping("/query")
-    public PageVO<Powercircle> query(@RequestBody Page<Powercircle> page) {
-        Page<Powercircle> recordsPage = powercircleService.selectPage(page);
-        return new PageVO<>(recordsPage);
-    }
-
-    @PostMapping("/create")
-    public ResultVO create(@RequestBody Powercircle entity) {
-        ResultVO result = new ResultVO();
-        powercircleService.insert(entity);
-        return result;
-    }
-
+    /*
     @PostMapping("/update")
     public ResultVO update(@RequestBody Powercircle entity) {
         ResultVO result = new ResultVO();
@@ -54,5 +42,14 @@ public class PowercircleApiController extends RestApiController<Powercircle> {
         powercircleService.deleteById(entity.getId());
         return result;
     }*/
+    @PostMapping("/create")
+    public ResultVO create(@RequestBody Powercircle entity) {
+        return powercircleService.insert(entity);
+    }
+
+    @PostMapping("/query")
+    public ResultVO query() {
+        return powercircleService.query();
+    }
 
 }

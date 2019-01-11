@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DictionaryDao extends BaseMapper<Dictionary> {
 
-    @Select("select dicValue from t_dictionary where dicName = #{dicName}")
+    @Select("select dict_value from t_dictionary where dict_name = #{dicName}")
     String getDicValueByDicName(@Param("dicName") String dicName);
 
 }

@@ -1,7 +1,9 @@
 package com.sss.entity;
 
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.*;
 
 import java.util.Date;
@@ -21,6 +23,8 @@ import java.util.Date;
 @TableName("t_articlelike_user")
 @EqualsAndHashCode(callSuper = true)
 public class ArticlelikeUser extends BaseEntity {
+    @TableId(value = "id", type = IdType.UUID)
+    private String id;
 
     @TableField("articleId")
     private String articleId;
@@ -36,5 +40,8 @@ public class ArticlelikeUser extends BaseEntity {
 
     @TableField("updateTime")
     private Date updateTime;
+
+    @TableField("createTime")
+    private Date createTime;
 
 }
